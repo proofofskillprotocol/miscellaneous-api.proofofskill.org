@@ -47,7 +47,7 @@ app.post('/decompress', function (req, res) {
             res.send({ message: 'An error occurred during decompression' });
         } else {
             // console.log('Decompressed data:', decompressedData.toString('utf-8'));
-            res.json({ data: decompressedData });
+            res.json({ data: JSON.parse(decompressedData.toString('utf-8')) });
         }
     });
     // res.send.json({ message: 'Decompression completed' });
