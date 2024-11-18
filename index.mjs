@@ -50,7 +50,7 @@ app.post('/decompress', function (req, res) {
             res.json({ data: decompressedData.toString('utf-8') });
         }
     });
-    res.send.json({ message: 'Decompression completed' });
+    // res.send.json({ message: 'Decompression completed' });
 
 });
 
