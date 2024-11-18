@@ -11,6 +11,22 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header(
+        'Access-Control-Allow-Headers',
+        'Authorization, Content-Type, x-origin',
+    );
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,PATCH,DELETE,OPTIONS');
+
+    // Send `No Content` to preflight requests
+    if (req.method === 'OPTIONS') {
+        res.sendStatus(204);
+    } else {
+        next();
+    }
+});
+
 const port = process.env.PORT || 3000;
 app.get('/', function (req, res) {
     res.send('Hello World')
